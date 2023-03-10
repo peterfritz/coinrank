@@ -17,10 +17,10 @@ func ConnectDB() *mongo.Client  {
     log.Println("No .env file found")
   }
 
-  uri := os.Getenv("MONGODB_URI")
+  uri := os.Getenv("MONGO_URL")
 
   if uri == "" {
-    log.Fatal("You must set your 'MONGODB_URI' environmental variable. See\n\t https://www.mongodb.com/docs/drivers/go/current/usage-examples/#environment-variable")
+    log.Fatal("You must set your 'MONGO_URL' environmental variable. See\n\t https://www.mongodb.com/docs/drivers/go/current/usage-examples/#environment-variable")
   }
 
   client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(uri))
