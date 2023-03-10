@@ -22,5 +22,5 @@ func main() {
   router.POST("/coins/:symbol/upvote", controllers.UpvoteCoin)
   router.POST("/coins/:symbol/downvote", controllers.DownvoteCoin)
 
-  router.Run("localhost:8080")
+  router.Run()
 }
