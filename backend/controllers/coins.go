@@ -45,7 +45,7 @@ func GetCoins(c *gin.Context) {
 func UpvoteCoin(c *gin.Context) {
 	symbol := c.Param("symbol")
 
-	matched, _ := regexp.MatchString(`^[A-Z]{3,}$`, symbol)
+	matched, _ := regexp.MatchString(`^[A-Z0-9]+$`, symbol)
 
 	if !matched {
 		c.JSON(400, gin.H{"error": "Invalid symbol"})
@@ -84,7 +84,7 @@ func UpvoteCoin(c *gin.Context) {
 func DownvoteCoin(c *gin.Context) {
 	symbol := c.Param("symbol")
 
-	matched, _ := regexp.MatchString(`^[A-Z]{3,}$`, symbol)
+	matched, _ := regexp.MatchString(`^[A-Z0-9]+$`, symbol)
 
 	if !matched {
 		c.JSON(400, gin.H{"error": "Invalid symbol"})
@@ -100,6 +100,7 @@ func DownvoteCoin(c *gin.Context) {
 
 	if err != nil {
 		c.JSON(500, gin.H{"error": err.Error()})
+
 		return
 	}
 

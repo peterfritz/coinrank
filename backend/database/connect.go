@@ -29,16 +29,20 @@ func ConnectDB() *mongo.Client {
 	}
 
 	if err := client.Database("coinrank").CreateCollection(context.Background(), "coins"); err == nil {
-		coins := []interface{}{
-			bson.M{"name": "Bitcoin", "symbol": "BTC", "upvotes": 0, "downvotes": 0},
-			bson.M{"name": "Ethereum", "symbol": "ETH", "upvotes": 0, "downvotes": 0},
-			bson.M{"name": "Ripple", "symbol": "XRP", "upvotes": 0, "downvotes": 0},
-		}
-
-		client.Database("coinrank").Collection("coins").InsertMany(context.Background(), coins)
+		ResetDB(client)
 	}
 
 	return client
 }
 
 var Client *mongo.Client = ConnectDB()
+
+func ResetDB(client *mongo.Client) {
+	coins := []interface{}{
+		bson.M{"name": "Bitcoin", "symbol": "BTC", "upvotes": 0, "downvotes": 0},
+		bson.M{"name": "Ethereum", "symbol": "ETH", "upvotes": 0, "downvotes": 0},
+		bson.M{"name": "Klever", "symbol": "KLV", "upvotes": 0, "downvotes": 0},
+	}
+
+	client.Database("coinrank").Collection("coins").InsertMany(context.Background(), coins)
+}
