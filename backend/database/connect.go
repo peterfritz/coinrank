@@ -19,7 +19,7 @@ func ConnectDB() *mongo.Client {
 	uri := os.Getenv("MONGO_URL")
 
 	if uri == "" {
-		log.Fatal("You must set your 'MONGO_URL' environmental variable. See\n\t https://www.mongodb.com/docs/drivers/go/current/usage-examples/#environment-variable")
+		log.Fatal("You must set your 'MONGO_URL' environmental variable. See https://www.mongodb.com/docs/drivers/go/current/usage-examples/#environment-variable")
 	}
 
 	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(uri))
@@ -38,6 +38,8 @@ func ConnectDB() *mongo.Client {
 var Client *mongo.Client = ConnectDB()
 
 func ResetDB(client *mongo.Client) {
+	client.Database("coinrank").Collection("coins").DeleteMany(context.Background(), bson.M{})
+
 	coins := []interface{}{
 		bson.M{"name": "Bitcoin", "symbol": "BTC", "upvotes": 0, "downvotes": 0},
 		bson.M{"name": "Ethereum", "symbol": "ETH", "upvotes": 0, "downvotes": 0},
