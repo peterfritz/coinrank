@@ -14,4 +14,4 @@ Overall, the CoinRank API is a valuable tool for anyone looking to build a robus
 
 ## Deploy
 
-[![Deploy the back-end (API) on Railway](https://railway.app/button.svg)](https://railway.app/template/lBuqJY?referralCode=ptr)
+[![Deploy the back-end (API) on Railway](https://img.shields.io/badge/DEPLOY%20API%20ON%20RAILWAY-000000?style=for-the-badge&logo=railway)](https://railway.app/template/lBuqJY?referralCode=ptr)

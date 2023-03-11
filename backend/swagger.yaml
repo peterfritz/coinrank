@@ -16,7 +16,7 @@ info:
   license:
     name: MIT
     url: https://github.com/peterfritz/coinrank/blob/main/LICENSE
-  version: 1.0.11
+  version: 1.0.0
 externalDocs:
   description: Source
   url: https://github.com/peterfritz/coinrank
