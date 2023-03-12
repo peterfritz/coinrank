@@ -19,7 +19,31 @@ type Coin struct {
 func GetCoins(c *gin.Context) {
 	var coins []Coin
 
-	cursor, err := database.Client.Database("coinrank").Collection("coins").Find(context.Background(), bson.M{})
+	collection := database.Client.Database("coinrank").Collection("coins")
+
+	cursor, err := collection.Aggregate(
+		context.Background(),
+		[]bson.M{
+			{
+				"$addFields": bson.M{
+					"diff": bson.M{
+						"$subtract": []interface{}{
+							"$upvotes",
+							"$downvotes",
+						},
+					},
+				},
+			},
+			{
+				"$sort": bson.M{
+					"diff": -1,
+				},
+			},
+			{
+				"$unset": "diff",
+			},
+		},
+	)
 
 	if err != nil {
 		c.JSON(500, gin.H{"error": err.Error()})
@@ -53,7 +77,9 @@ func UpvoteCoin(c *gin.Context) {
 		return
 	}
 
-	result, err := database.Client.Database("coinrank").Collection("coins").UpdateOne(
+	collection := database.Client.Database("coinrank").Collection("coins")
+
+	result, err := collection.UpdateOne(
 		context.Background(),
 		bson.M{"symbol": symbol},
 		bson.M{"$inc": bson.M{"upvotes": 1}},
@@ -73,7 +99,7 @@ func UpvoteCoin(c *gin.Context) {
 
 	var updatedCoin Coin
 
-	database.Client.Database("coinrank").Collection("coins").FindOne(
+	collection.FindOne(
 		context.Background(),
 		bson.M{"symbol": symbol},
 	).Decode(&updatedCoin)
@@ -92,7 +118,9 @@ func DownvoteCoin(c *gin.Context) {
 		return
 	}
 
-	result, err := database.Client.Database("coinrank").Collection("coins").UpdateOne(
+	collection := database.Client.Database("coinrank").Collection("coins")
+
+	result, err := collection.UpdateOne(
 		context.Background(),
 		bson.M{"symbol": symbol},
 		bson.M{"$inc": bson.M{"downvotes": 1}},
@@ -112,7 +140,7 @@ func DownvoteCoin(c *gin.Context) {
 
 	var updatedCoin Coin
 
-	database.Client.Database("coinrank").Collection("coins").FindOne(
+	collection.FindOne(
 		context.Background(),
 		bson.M{"symbol": symbol},
 	).Decode(&updatedCoin)
