@@ -35,8 +35,15 @@ func GetCoins(c *gin.Context) {
 				},
 			},
 			{
-				"$sort": bson.M{
-					"diff": -1,
+				"$sort": bson.D{
+					{
+						Key: "diff",
+						Value: -1,
+					},
+					{
+						Key: "symbol",
+						Value: 1,
+					},
 				},
 			},
 			{
