@@ -1,7 +1,6 @@
 import Coin from '@/components/Coin';
 import fetcher from '@/handlers/fetcher';
 import {
-  Box,
   Skeleton,
   Stack,
 } from '@mantine/core';
@@ -61,43 +60,34 @@ const Home = () => {
   );
 
   return (
-    <Box
-      component="main"
-      sx={(theme) => ({
-        margin: '0 auto',
-        maxWidth: theme.breakpoints.sm,
-        padding: theme.spacing.md,
-      })}
-    >
-      <Stack>
-        <Reorder.Group
-          values={data}
-          onReorder={() => {}}
-          style={{
-            display: 'contents',
-            listStyle: 'none',
-          }}
-        >
-          {data?.map((coin) => (
-            <Reorder.Item
-              key={coin.symbol}
-              value={coin.symbol}
-              dragListener={false}
-            >
-              <Skeleton visible={!coin.name}>
-                <Coin
-                  name={coin.name}
-                  symbol={coin.symbol}
-                  upvotes={coin.upvotes}
-                  downvotes={coin.downvotes}
-                  registerVote={registerVote}
-                />
-              </Skeleton>
-            </Reorder.Item>
-          ))}
-        </Reorder.Group>
-      </Stack>
-    </Box>
+    <Stack>
+      <Reorder.Group
+        values={data}
+        onReorder={() => {}}
+        style={{
+          display: 'contents',
+          listStyle: 'none',
+        }}
+      >
+        {data?.map((coin) => (
+          <Reorder.Item
+            key={coin.symbol}
+            value={coin.symbol}
+            dragListener={false}
+          >
+            <Skeleton visible={!coin.name}>
+              <Coin
+                name={coin.name}
+                symbol={coin.symbol}
+                upvotes={coin.upvotes}
+                downvotes={coin.downvotes}
+                registerVote={registerVote}
+              />
+            </Skeleton>
+          </Reorder.Item>
+        ))}
+      </Reorder.Group>
+    </Stack>
   );
 };
 

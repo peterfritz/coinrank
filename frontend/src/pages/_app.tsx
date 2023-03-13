@@ -1,9 +1,10 @@
 import type { AppProps } from 'next/app';
 
-import { MantineProvider } from '@mantine/core';
+import { Box, MantineProvider } from '@mantine/core';
 import { JetBrains_Mono as JetBrainsMono } from 'next/font/google';
-import Head from 'next/head';
 
+import Header from '@/components/Header';
+import MetaTags from '@/components/MetaTags';
 import '@/styles/globals.css';
 
 const jetBrainsMono = JetBrainsMono({
@@ -13,12 +14,7 @@ const jetBrainsMono = JetBrainsMono({
 
 const App = ({ Component, pageProps }: AppProps) => (
   <>
-    <Head>
-      <title>CoinRank</title>
-      <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
-
+    <MetaTags />
     <MantineProvider
       withGlobalStyles
       withNormalizeCSS
@@ -30,7 +26,20 @@ const App = ({ Component, pageProps }: AppProps) => (
         },
       }}
     >
-      <Component {...pageProps} />
+      <Box
+        component="main"
+        sx={(theme) => ({
+          margin: '0 auto',
+          maxWidth: theme.breakpoints.sm,
+          padding: theme.spacing.md,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: theme.spacing.md,
+        })}
+      >
+        <Header />
+        <Component {...pageProps} />
+      </Box>
     </MantineProvider>
   </>
 );
