@@ -2,15 +2,7 @@ openapi: 3.0.3
 info:
   title: CoinRank API
   description: |-
-    The CoinRank API is a powerful tool that allows users to rate and evaluate cryptocurrencies using the familiar "upvote" and "downvote" system. With this API, developers can easily integrate a powerful rating system into their cryptocurrency platforms, providing users with a quick and easy way to assess the value and popularity of different coins.
-    
-    Using the CoinRank API is incredibly simple. Developers simply need to make a request to the API endpoint, passing in the relevant information about the cryptocurrency in question. The API will then return a simple JSON response that includes the current rating of the coin, as well as the total number of upvotes and downvotes it has received.
-    
-    One of the key benefits of using the CoinRank API is that it allows for a more democratic and decentralized approach to evaluating cryptocurrencies. Instead of relying on a handful of experts or influencers to determine which coins are valuable or popular, the CoinRank API empowers the broader community to have a say in the matter.
-    
-    This is particularly important in the rapidly evolving world of cryptocurrency, where new coins and technologies are emerging all the time. By providing a simple and accessible rating system, the CoinRank API allows users to quickly and easily evaluate the merits of different coins, without requiring extensive technical knowledge or expertise.
-    
-    Overall, the CoinRank API is a valuable tool for anyone looking to build a robust and user-friendly cryptocurrency platform. Whether you're developing a trading platform, a portfolio management tool, or a news aggregator, the CoinRank API can help you provide your users with the insights they need to make informed decisions about their cryptocurrency investments.
+    The CoinRank API is a powerful tool that allows users to rate and evaluate cryptocurrencies using the familiar "upvote" and "downvote" system.
   contact:
     email: support@peterfritz.dev
   license:
