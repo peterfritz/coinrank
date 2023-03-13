@@ -12,7 +12,6 @@ Project developed as part of a talent selection/recruitment process for [Klever]
 
 <hr />
 <br />
-<br />
 
 ## Deploy
 
@@ -29,7 +28,6 @@ Spin up your own instance of the CoinRank API using Vercel and Railway with just
   </a>
 </div>
 
-<br />
 <br />
 
 ## Documentation / Endpoints
