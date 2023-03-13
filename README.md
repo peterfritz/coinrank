@@ -65,7 +65,7 @@ All the icons were provided by [Font Awesome](https://fontawesome.com/) through 
 1. Clone the repository running `git clone https://github.com/peterfritz/coinrank.git`, `git clone git@github.com:peterfritz/coinrank.git` or `gh repo clone peterfritz/coinrank` depending on your setup.
 2. Open the directory cloned running `cd coinrank`.
 3. Run the database, the back-end, and the front-end using `docker-compose up -d`.
-4. Open a new tab on your browser and navigate to http://localhost:80/ if everything worked you should be able to see the application running.
+4. Open a new tab on your browser and navigate to [`http://localhost:80/`](http://localhost:80/). If everything worked you should be able to see the application running.
 
 > **Note**
 > 
