@@ -57,3 +57,13 @@ The database chosen was [MongoDB](https://www.mongodb.com/) beacause of its ease
 The front-end is written in Typescript and uses [React](https://reactjs.org/), [Next.js](https://nextjs.org/) and [SWR](https://swr.vercel.app/) under the hood to increase performance, accessibility and maintainability.
 The styles and animations are made with [Mantine](https://mantine.dev/) and [Framer Motion](https://www.framer.com/motion/).
 All the icons were provided by [Font Awesome](https://fontawesome.com/) through [React Icons](https://react-icons.github.io/react-icons/icons?name=fa).
+
+<br />
+
+## Development
+
+1. Clone the repository running `git clone https://github.com/peterfritz/coinrank.git`, `git clone git@github.com:peterfritz/coinrank.git` or `gh repo clone peterfritz/coinrank` depending on your setup.
+2. Open the directory cloned running `cd coinrank`
+3. Run the database, the back-end, and the front-end using `docker-compose up -d`
+4. Open a new tab on your browser and navigate to http://localhost:80/ if everything worked you should be able to see the application running.
+5. The front-end uses the port [80](http://localhost:80/) and the back-end uses the port [8080](http://localhost:8080/).

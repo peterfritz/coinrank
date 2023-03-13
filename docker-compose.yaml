@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+  database:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: coinrank
+      MONGO_INITDB_ROOT_PASSWORD: superSecret
+  backend:
+    build: ./backend
+    image: coinrank-backend
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      MONGO_URL: mongodb://coinrank:superSecret@database:27017/
+    depends_on:
+      - database
+  frontend:
+    build: ./frontend
+    image: coinrank-frontend
+    restart: always
+    ports:
+      - 80:80
+    environment:
+      PORT: 80
+    depends_on:
+      - backend
+
